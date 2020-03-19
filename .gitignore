@@ -1,4 +1,8 @@
+#ignore
 db.sqlite3
 django_env
-manage.py
-proj_saree_settings
+.vscode
+media/*
+
+#exceptions
+!media/.gitkeep

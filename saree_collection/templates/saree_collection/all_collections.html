@@ -1,0 +1,18 @@
+{% extends 'saree_collection/base.html' %}
+{% load sar_tmp_tags %}
+
+
+{% block content %}
+<section id="collections" class="grid">
+    {% for collection in collections %}
+    <div class="collection">
+        <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
+            <p>{{collection}} collection</p>
+            <img src="/media/{% collection_thumbnail collection %}" alt="">
+            <p>{% number_of_items collection %} items</p>
+        </a>
+    </div>
+    {% endfor %}
+</section>
+{% endblock content %}
+    

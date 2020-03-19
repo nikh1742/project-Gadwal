@@ -1,0 +1,277 @@
+/* variables */
+:root{
+    --primary: #ffffff;
+    --secondary: #0b0b1f;
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* base styles */
+body{
+    background: var(--primary);
+    overflow-x: hidden;
+    font-family: 'Rubik Regular';
+}
+input, textarea{
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px, 16px;
+    border-radius: 10px;
+    border: 2px solid #661800;
+    font-size: 1em;
+}
+
+/* fonts */
+@font-face{
+    font-family: 'Rubik Regular';
+    src: url("fonts/Rubik-Regular.ttf");
+}
+h1, h2, h3, h4 {
+    color: #0b0b1f;
+    font-weight: normal;
+    line-height: 1.4em;
+}
+p, a, li{
+    color: #0b0b1f;
+    line-height: 1.4em;
+    font-size: 1em;
+}
+h1, h3{
+    font-size: 1.2em;
+}
+h2{
+font-size: 1.6em;
+}
+h4{
+font-size: 1.1em;
+}
+.leading{
+font-size: 1.1em;
+}
+/* mobile styles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1px;
+    box-sizing: border-box;
+}
+
+.site-nav{
+    padding: 10px 20px;
+    background: tomato;
+}
+
+.site-nav .logo{
+    grid-column: 1/5;
+    grid-row: 1;
+}
+
+.site-nav h1{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid var(--secondary);
+    display: inline-block;
+}
+.site-nav ul {
+    display: none;
+}
+#toggle{
+    display: none;
+}
+.menu {
+    grid-column: 8/10;
+    justify-self: right;
+    align-self: center;
+    margin-right: 10px;
+    padding-right: 5px;
+}
+
+.menu:hover, .menu:active {
+    cursor: pointer;
+}
+#toggle:checked + .site-nav ul{
+    display: flex;
+    grid-column: 1/10;
+    grid-row: 2;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+    background: aliceblue;
+}
+.site-nav li{
+    padding: 5px;
+    
+}
+.site-nav li a{
+    padding: 0 10px;
+}
+#welcome{
+    padding: 0 20px 20px 20px;
+    background-size: cover;
+    background: floralwhite;
+}
+.welcome-text{
+grid-column: 1/10;
+}
+.welcome-text a{
+margin: 20px 0;
+}
+.welcome-img{
+grid-column: 1/10;
+}
+#welcome img{
+width: 100%;
+}
+
+#collections{
+    background: floralwhite;
+}
+.collections-text {
+    text-align: center;
+    background-color: #ffdcdc;
+}
+.collection {
+    grid-column: span 4;
+    padding: 20px;
+}
+.collection img{
+    border-radius: 5px;
+    width: 100%;
+}
+.collection-link{
+    grid-column: span 4;
+    margin-bottom: 10px;
+    justify-self: center;
+    align-self: center;
+    font-size: 0.9em;
+}
+.collection-link{
+    padding: 10px;
+    background:seashell;
+    border: 2px solid;
+    border-radius: 10px;
+}
+.collection-link:hover{
+    background: wheat;
+}
+.collection-link:active{
+    background: wheat;
+}
+#sarees{
+    text-align: center;
+    padding: 20px;   
+}
+#sarees h2{
+    padding-bottom: 10px;
+}
+#sarees .grid{
+    row-gap: 20px;
+    column-gap: 5px;
+}
+.saree_img{
+    grid-column: span 4;
+}
+.saree_img img{
+    width: 100%;
+}
+#contact{
+    padding: 30px 20px;
+    background: #e2c9c2;
+}
+#contact h3, #contact p{
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#contact form{
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    text-align: center;
+}
+#contact input,#contact textarea{
+    width: 100%;
+    margin: 2px 0;
+    padding: 10px;
+}
+#contact textarea{
+    max-width: 100%;
+    height: 200px;
+} 
+
+footer{
+    padding: 15px 20px;
+    background-color: tomato;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+
+footer p{
+    grid-column: 1/5;
+    font-size: 1em;
+    align-self: center;
+}
+footer .social{
+    grid-column: 7/10;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+footer .social li{
+    padding: 10px;
+}
+  
+
+/* small table styles */
+@media screen and (min-width: 620px){
+}
+/* large tablets and laptops */
+@media screen and (min-width: 960px){
+    body{
+        font-size: 18px;
+    }
+    .menu{
+        display: none;
+    }
+    .site-nav ul{
+        display: flex;
+        grid-column: 6/10;
+        justify-content: flex-end;
+        align-self: center;
+    }
+    .site-nav li{
+        padding: 10px;
+    }
+    .collection {
+        grid-column: span 3;
+    }
+    .saree_img {
+        grid-column: span 3;
+    }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1200px){
+    body{
+        font-size: 20px;
+    }
+}

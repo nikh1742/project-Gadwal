@@ -1,0 +1,18 @@
+{% extends 'saree_collection/base.html' %}
+
+
+{% block content %}
+    <section id='sarees'>
+        <h2>{{ collection }} Collection</h2>
+        <div class="grid">
+            {% for saree in sarees %}
+            <div class="saree_img">
+                <img src="/media/{{saree.saree_img}}" alt="">
+            </div>
+            {% empty %}
+            <p>No items in current collection</p>
+            {% endfor %}
+        </div>
+    </section>
+        
+{% endblock content %}

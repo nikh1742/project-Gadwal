@@ -1,0 +1,43 @@
+{% extends 'saree_collection/base.html' %}
+{% load sar_tmp_tags %}
+
+
+{% block content %}
+<section id="welcome" class="grid">
+    <div class="welcome-text">
+        <h2>Gadwal and Kanchipattu saree collections</h2>
+        <p>
+            Gadwal sari is a handcrafted woven sari style in Gadwal of Jogulamba Gadwal district in the Indian state of
+            Telangana. It was registered as one of the geographical indication from Telangana by Geographical
+            Indications of Goods (Registration and Protection) Act, 1999.[1][2] They are most notable for the Zari on
+            the saris. The sari consists of cotton body with silk pallu which is also given a new name as Sico saris.
+            The weave is so light that the saree can be packed in a matchbox.[3] The Brahmostsavas of Tirupati begins
+            with the Gods idol being adorned with gadwal Saree.
+        </p>
+    </div>
+    <div class="welcome-img">
+        <img src="/media/indian-saree-design-19704686.jpg" alt="a banner saree">
+    </div>
+</section>
+
+<section id="collections">
+    <div class="collections-text">
+        <h2>A few of the collections</h2>
+    </div>
+    <div class="grid">
+        {% reduced_collection_items as collections %}
+        {% for collection in collections %}
+        <div class="collection">
+            <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
+                <p>{{collection}} collection</p>
+                <img src="/media/{% collection_thumbnail collection %}" alt="">
+                <p>{% number_of_items collection %} items</p>
+            </a>
+        </div>
+        {% endfor %}
+        <a href="{% url 'sar_coll:all_coll' %}" class="collection-link">...More collections</a>
+    </div>
+</section>
+
+
+{% endblock content %}

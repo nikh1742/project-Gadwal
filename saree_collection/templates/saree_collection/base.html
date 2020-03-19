@@ -1,0 +1,42 @@
+{% load static %}
+{% load sar_tmp_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookcase</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <input type="checkbox" id="toggle">
+    <nav class="site-nav grid">
+        <a href="{% url 'sar_coll:home' %}" class="logo"><h1>Gadwal Sarees</h1></a>
+        <label for="toggle" class="menu">Menu</label>
+        <ul>
+            <li><a href="{% url 'sar_coll:all_coll' %}">All collections</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+            
+        {% endblock content %}
+    </main>
+    <section id="contact">
+        <h3>Get In Touch</h3>
+        <p class="leading">Call us (or) get a call from us</p>
+        <form action="">
+            {% contact_form %}
+        </form>
+    </section>
+    <footer>
+        <div class="grid">
+            <p>call/message directly us on</p>
+            <div class="social">
+                <li><a href=""><img src="" alt="">FB</a></li>
+                <li><a href=""><img src="" alt="">WhatsApp</a></li>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
