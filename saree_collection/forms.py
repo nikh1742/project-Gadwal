@@ -12,7 +12,9 @@ class SareeModelForm(forms.ModelForm):
     """Model form created from SareeModel"""
     class Meta:
         model = SareeModel
-        fields = ['saree_img', 'collection_name']
+        fields = ['saree_img',
+        #  'collection_name'
+         ]
         widgets = {
             'saree_img': ClearableFileInput(attrs={'multiple':True}),
         }

@@ -1,5 +1,4 @@
-import io
-from PIL import Image
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import SareeModel, CollectionModel, CustomerContactModel
@@ -16,10 +15,15 @@ def add_new_collection(request):
         # making a list of all uploaded images
         images_list_from_form = request.FILES.getlist('saree_img')
         if images_form.is_valid():
+            collection_name = datetime.now().strftime("%B")
+            if collection_name not in [i.collection_name for i in CollectionModel.objects.all()]:
+                collection = CollectionModel(collection_name = collection_name)
+                collection.save()
             # getting the collection to which the images are being uploaded to 
-            collection = images_form.instance.collection_name
+            # collection_name_id = images_form.instance.collection_name
+            collection_name_id = CollectionModel.objects.get(collection_name = collection_name)
             for f in images_list_from_form:
-                file = SareeModel(saree_img=f, collection_name=collection)
+                file = SareeModel(saree_img=f, collection_name = collection_name_id)
                 file.save()
         return HttpResponse('Done')
     else:
