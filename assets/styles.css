@@ -29,6 +29,7 @@ body{
     background: var(--primary);
     overflow-x: hidden;
     font-family: 'Rubik Regular';
+    font-size: 25px;
 }
 input, textarea{
     background: rgba(255, 255, 255, 0.1);
@@ -147,6 +148,10 @@ width: 100%;
     text-align: center;
     background-color: #ffdcdc;
 }
+.collections-text img{
+    border-radius: 50px;
+    width: 30%;
+}
 .collection {
     grid-column: span 4;
     padding: 20px;
@@ -247,7 +252,7 @@ footer .social li{
 /* large tablets and laptops */
 @media screen and (min-width: 960px){
     body{
-        font-size: 18px;
+        font-size: 30px;
     }
     .menu{
         display: none;
@@ -272,6 +277,6 @@ footer .social li{
 /* desktop styles */
 @media screen and (min-width: 1200px){
     body{
-        font-size: 20px;
+        font-size: 32px;
     }
 }

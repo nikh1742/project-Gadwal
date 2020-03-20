@@ -14,7 +14,7 @@ def collection_thumbnail(collection_name):
     """template tag to display thumbnail of a collection.
     It is selected by the first image from the filtered query"""
     collection = CollectionModel.objects.get(collection_name=collection_name)
-    thumb = SareeModel.objects.filter(collection_name=collection.id)[1].saree_img
+    thumb = SareeModel.objects.filter(collection_name=collection.id)[0].saree_img
     return thumb
 
 @register.simple_tag

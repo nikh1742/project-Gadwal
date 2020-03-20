@@ -21,11 +21,18 @@
 </section>
 
 <section id="collections">
+    {% reduced_collection_items as collections %}
     <div class="collections-text">
-        <h2>A few of the collections</h2>
+        
+        {% if collections %}
+            <h2>A few of the collections</h2>
+        {% else %}
+            <h2>No current collections are available. Check again later...</h2>
+            <img src="/media/oops.jpg" alt="oops no collections">
+        {% endif %}
+            
     </div>
     <div class="grid">
-        {% reduced_collection_items as collections %}
         {% for collection in collections %}
         <div class="collection">
             <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
@@ -35,7 +42,11 @@
             </a>
         </div>
         {% endfor %}
+        
+        {% if collections %}
         <a href="{% url 'sar_coll:all_coll' %}" class="collection-link">...More collections</a>
+        {% endif %}
+            
     </div>
 </section>
 
