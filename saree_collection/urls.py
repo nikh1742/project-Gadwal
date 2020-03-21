@@ -12,7 +12,8 @@ urlpatterns = [
     path('all_collections/', views.all_collections,name='all_coll'),
     path('collections/', views.collections,name='collections'),
     path('all_collections/<str:collection>/', views.sarees_in_collection, name='saree_coll'),
-    path('customer_contact/', views.CustomerContactModel_view, name='cust_cont'),
+    path('customer_contact/', views.customer_contact_form_view, name='cust_cont'),
+    path('all_sarees/', views.all_sarees, name='all_sarees'),
 ]
 
 

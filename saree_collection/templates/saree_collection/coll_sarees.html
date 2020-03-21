@@ -7,7 +7,7 @@
         <div class="grid">
             {% for saree in sarees %}
             <div class="saree_img">
-                <img src="/media/{{saree.saree_img}}" alt="">
+                <img src="/media/{{saree.saree_img.thumbnail }}" alt="">
             </div>
             {% empty %}
             <p>No items in current collection</p>

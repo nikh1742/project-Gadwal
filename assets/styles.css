@@ -30,6 +30,7 @@ body{
     overflow-x: hidden;
     font-family: 'Rubik Regular';
     font-size: 25px;
+    min-height: 100%;
 }
 input, textarea{
     background: rgba(255, 255, 255, 0.1);
@@ -80,7 +81,7 @@ font-size: 1.1em;
 }
 
 .site-nav .logo{
-    grid-column: 1/5;
+    grid-column: 1/4;
     grid-row: 1;
 }
 
@@ -124,18 +125,20 @@ font-size: 1.1em;
     padding: 0 10px;
 }
 #welcome{
-    padding: 0 20px 20px 20px;
+    padding: 20px;
     background-size: cover;
     background: floralwhite;
 }
 .welcome-text{
-grid-column: 1/10;
+    grid-column: 1/-1;
+    grid-row: 1;
 }
 .welcome-text a{
 margin: 20px 0;
 }
 .welcome-img{
-grid-column: 1/10;
+grid-column: 1/-1;
+grid-row: 2;
 }
 #welcome img{
 width: 100%;
@@ -160,6 +163,10 @@ width: 100%;
     border-radius: 5px;
     width: 100%;
 }
+
+.link {
+    text-align: center;
+}
 .collection-link{
     grid-column: span 4;
     margin-bottom: 10px;
@@ -168,13 +175,18 @@ width: 100%;
     font-size: 0.9em;
 }
 .collection-link{
-    padding: 10px;
-    background:seashell;
-    border: 2px solid;
-    border-radius: 10px;
+    /*! padding: 10px; */
+    /*! background:seashell; */
+    /*! border: 2px solid; */
+    /*! border-radius: 10px; */
+    margin: 0;
+    font-size: 1em;
+    text-decoration: underline;
 }
 .collection-link:hover{
     background: wheat;
+    border-radius: 15px;
+    padding: 2px 5px;
 }
 .collection-link:active{
     background: wheat;
@@ -234,21 +246,24 @@ width: 100%;
 }
 
 footer{
-    padding: 15px 20px;
+    clear: both;
+    position: relative;
+    height: 75px;
+    margin-top: auto;
     background-color: tomato;
-    background-size: 40%;
-    background-repeat: no-repeat;
-    background-position: top center;
+}
+footer .grid{
+    height: 100%;
 }
 
-
 footer p{
+    padding: 0 10px;
     grid-column: 1/5;
     font-size: 1em;
     align-self: center;
 }
 footer .social{
-    grid-column: 7/10;
+    grid-column: 6/10;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -271,7 +286,7 @@ footer .social li{
     }
     .site-nav ul{
         display: flex;
-        grid-column: 6/10;
+        grid-column: 4/10;
         justify-content: flex-end;
         align-self: center;
     }
@@ -289,6 +304,15 @@ footer .social li{
     }
     #contact input,#contact textarea{
         width: 90%;
+    }
+    .welcome-text{
+    padding: 20px;
+    grid-column: span 5;
+    grid-row: 1;
+    }
+    .welcome-img{
+    grid-column: span 5;
+    grid-row: 1;
     }
 }
 

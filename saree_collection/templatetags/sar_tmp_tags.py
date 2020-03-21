@@ -15,7 +15,7 @@ def collection_thumbnail(collection_name):
     It is selected by the first image from the filtered query"""
     collection = CollectionModel.objects.get(collection_name=collection_name)
     if SareeModel.objects.filter(collection_name=collection.id):
-        thumb = SareeModel.objects.filter(collection_name=collection.id)[0].saree_img
+        thumb = SareeModel.objects.filter(collection_name=collection.id)[0].saree_img.thumbnail
         return thumb
     else:
         return 'default.png'

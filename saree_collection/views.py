@@ -58,7 +58,7 @@ def add_to_collection(request):
 
 def collections(request):
     """A default homepage view."""
-    return render(request, 'saree_collection/collections.html')
+    return render(request, 'saree_collection/home.html')
 
 def all_collections(request):
     """All collections view."""
@@ -77,9 +77,9 @@ def sarees_in_collection(request, collection):
         'sarees': sarees,
         'collection': collection
     }
-    return render(request, 'saree_collection/sarees.html', context)
+    return render(request, 'saree_collection/coll_sarees.html', context)
 
-def CustomerContactModel_view(request):
+def customer_contact_form_view(request):
     if request.method == 'POST':
         form = CustomerContactForm(date=request.POST)
         if form.is_valid():
@@ -88,3 +88,10 @@ def CustomerContactModel_view(request):
     form = CustomerContactForm()
     context = {'form': form}
     return render(request, 'saree_collection/CustomerContactModel.html', context)
+
+def all_sarees(request):
+    sarees = SareeModel.objects.all()
+    context = {
+        'sarees': sarees
+    }
+    return render(request, 'saree_collection/all_sarees.html', context)

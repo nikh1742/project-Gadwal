@@ -1,0 +1,17 @@
+{% extends 'saree_collection/base.html' %}
+
+{% block content %}
+    <section id='sarees'>
+        <h2>Entire inventory we carry</h2>
+        <div class="grid">    
+            {% for saree in sarees %}
+            <div class="saree_img">
+                <img src="/media/{{ saree.saree_img.thumbnail }}" alt="">
+            </div>
+            {% empty %}
+            <p>Empty inventory</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
+    
