@@ -1,0 +1,11 @@
+{% extends 'saree_collection/base.html' %}
+
+{% block content %}
+
+    <form action="{% url 'sar_coll:add_to_coll' %}" method="POST" enctype="multipart/form-data">
+        {{ form }}
+        {% csrf_token %}
+        <input type="submit" value="submit">
+    </form>
+
+{% endblock content %}

@@ -15,6 +15,16 @@ class SareeModelForm(forms.ModelForm):
         fields = ['saree_img',
         #  'collection_name'
          ]
+        # this widget allows multiple files upload
+        widgets = {
+            'saree_img': ClearableFileInput(attrs={'multiple':True}),
+        }
+
+class SecSareeModelForm(forms.ModelForm):
+    """Model form for uploading images to existing collection"""
+    class Meta:
+        model = SareeModel
+        fields ='__all__'
         widgets = {
             'saree_img': ClearableFileInput(attrs={'multiple':True}),
         }
