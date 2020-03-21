@@ -42,11 +42,12 @@ def add_to_collection(request):
         images_form = SecSareeModelForm(request.POST, request.FILES)
         # making a list of all uploaded images
         images_list_from_form = request.FILES.getlist('saree_img')
-        # getting the collection to which the images are being uploaded to 
-        collection_instance = images_form.instance.collection_name
-        for f in images_list_from_form:
-            file = SareeModel(saree_img=f, collection_name = collection_instance)
-            file.save()
+        if images_form.is_valid():
+            # getting the collection to which the images are being uploaded to 
+            collection_instance = images_form.instance.collection_name
+            for f in images_list_from_form:
+                file = SareeModel(saree_img=f, collection_name = collection_instance)
+                file.save()
         return HttpResponse('Done')
     else:
         form =  SecSareeModelForm()
