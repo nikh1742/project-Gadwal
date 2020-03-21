@@ -10,3 +10,4 @@ media/*
 !media/.gitkeep
 !media/home_page.jpg
 !media/oops.jpg
+!media/default.png
