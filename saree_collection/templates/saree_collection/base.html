@@ -4,14 +4,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bookcase</title>
+    <title>Gadwal Sarees</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <input type="checkbox" id="toggle">
     <nav class="site-nav grid">
-        <a href="{% url 'sar_coll:home' %}" class="logo"><h1>Gadwal Sarees</h1></a>
-        <label for="toggle" class="menu">Menu</label>
+        <a href="{% url 'sar_coll:home' %}" class="logo"><h2>Gadwal Sarees</h2></a>
+        <label for="toggle" class="menu"><h2>Menu</h2></label>
         <ul>
             <li><a href="{% url 'sar_coll:all_coll' %}">All collections</a></li>
             <li><a href="{% url 'sar_coll:all_sarees' %}">All Sarees</a></li>
@@ -24,16 +24,23 @@
         {% endblock content %}
     </main>
     <section id="contact">
-        <h3>Get In Touch</h3>
-        <p class="leading">Call us (or) get a call from us</p>
+        <h2>Get In Touch</h2>
         <form action="{% url 'sar_coll:cust_cont' %}">
             {% contact_form %}
             <input type="submit" value="submit">
         </form>
+        <div class="contact_us">
+            <h2>call/message directly us at</h2>
+            <div>
+                <p>AnuRaghunath Enterprise</p>
+                <p>Phone: +919952092050</p>
+                <p>email: momaithnath@gmail.com</p>
+            </div>
+        </div>
     </section>
     <footer>
         <div class="grid">
-            <p>call/message directly us on</p>
+            <p>Follow us on</p>
             <div class="social">
                 <li><a href=""><img src="" alt="">FB</a></li>
                 <li><a href=""><img src="" alt="">WhatsApp</a></li>

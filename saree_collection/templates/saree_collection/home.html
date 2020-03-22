@@ -12,7 +12,7 @@
         <div class="about_us">
             <h2>About Us</h2>
             <p>
-                We are "Lowda Raghu" enterprise based in Hyderabad. We specialze in Gadwal Pattu Saree collection which
+                We are "Gadwal Saree" enterprise based in Hyderabad. We specialze in Gadwal Pattu Saree collection which
                 is a handcrafted woven sari style in Gadwal of Jogulamba Gadwal district which is famous all over South
                 India. We deliver sarees directly at your house*. Look at our collecitons below and contact us if you
                 need a visit from us</p>
@@ -20,24 +20,22 @@
     </div>
 </section>
 
-<section id="collections">
+<section id="home_collections">
     {% reduced_collection_items as collections %}
-    <div class="collections-text">
-
+    <div class="home_collections-text">
         {% if collections %}
         <h2>Our Special Collections</h2>
         {% else %}
         <h2>No current collections are available. Check again later...</h2>
         <img src="/media/oops.jpg" alt="oops no collections">
         {% endif %}
-
     </div>
     <div class="grid">
         {% for collection in collections %}
-        <div class="collection">
+        <div class="home_collection">
             <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
-                <p>{{collection}} collection</p>
                 <img src="/media/{% collection_thumbnail collection %}" alt="">
+                <p>{{collection}}</p>
                 <p>{% number_of_items collection %} items</p>
             </a>
         </div>
