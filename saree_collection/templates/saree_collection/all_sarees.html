@@ -1,17 +1,24 @@
 {% extends 'saree_collection/base.html' %}
 
 {% block content %}
-    <section id='sarees'>
-        <h2>Entire inventory we carry</h2>
-        <div class="grid">    
+<!-- All Sarees -->
+
+<section id='allSarees'>
+    <div class="container">
+        <h2 class="text-center display-3 ">Our entire Inventory</h2>
+        <div class="row mb-4 align-items-center">
             {% for saree in sarees %}
-            <div class="saree_img">
-                <img src="/media/{{ saree.saree_img.thumbnail }}" alt="">
+            <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="d-flex justify-content-center ">
+                    <a href="/media/{{saree.saree_img }}" data-toggle="lightbox" data-gallery="{{ collection }}">
+                        <img src="/media/{{saree.saree_img.thumbnail }}" class="img-fluid" alt="">
+                    </a>
+                </div>
             </div>
             {% empty %}
-            <p>Empty inventory</p>
+            <p>Oops. something went wrong</p>
             {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 {% endblock content %}
-    

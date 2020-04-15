@@ -1,370 +1,55 @@
-/* variables */
-:root{
-    --primary: #ffffff;
-    --secondary: #0b0b1f;
-}
-
-/* reset */
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-}
-
-li{
-    list-style-type: none;
-}
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* base styles */
-body{
-    background: var(--primary);
-    overflow-x: hidden;
-    font-family: 'Rubik Regular';
-    font-size: 25px;
-    /* min-height: calc(100vh); */
-    /* height: calc(100vh - 75px); */
-}
-input, textarea{
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px, 16px;
-    border-radius: 10px;
-    border: 2px solid #661800;
-    font-size: 1em;
-}
-
-/* fonts */
-@font-face{
-    font-family: 'Rubik Regular';
-    src: url("fonts/Rubik-Regular.ttf");
-}
-h1, h2, h3, h4 {
-    color: #0b0b1f;
-    font-weight: normal;
-    line-height: 1.4em;
-}
-p, a, li{
-    color: #0b0b1f;
-    /* line-height: 1.4em; */
-    font-size: 1em;
-}
-/* h1, h3{
-    font-size: 1.2em;
-}*/
-h2{
-font-size: 1.8em;
-}
-/*
-h4{
-font-size: 1.1em;
-} */
-/* mobile styles */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    /* gap: 1px; */
-    box-sizing: border-box;
-}
-
-.site-nav{
-    padding: 20px 20px 10px 20px;
-    background: tomato;
-}
-
-.site-nav .logo{
-    grid-column: 1/4;
-    grid-row: 1;
-}
-
-.site-nav h2{
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    border-bottom: 3px solid var(--secondary);
-    display: inline-block;
-}
-.site-nav label h2{
-    border:none;
-}
-.site-nav ul {
-    display: none;
-}
-#toggle{
-    display: none;
-}
-.menu {
-    grid-column: 8/10;
-    justify-self: right;
-    align-self: center;
-}
-
-.menu:hover, .menu:active {
-    cursor: pointer;
-}
-#toggle:checked + .site-nav ul{
-    font-size: 1.4em;
-    display: flex;
-    grid-column: 1/10;
-    grid-row: 2;
-    justify-content: center;
-    align-self: center;
+#about{
     position: relative;
-    background: aliceblue;
-}
-.site-nav li a{
-    padding: 20px 30px;
-}
-#welcome{
+    background: url(../media/beechupally.jpg);
     background-size: cover;
-    background: floralwhite;
-}
-.welcome-text{
-    padding: 10px  20px;
-    grid-column: 1/-1;
-    grid-row: 1;
-}
-.about_us{
-    display: flex;
-    flex-direction:column;
-}
-.about_us *{
-    padding: 10px 0;
-}
-.about_us h2{
-    font-weight: bold;
-}
-.welcome-text a{
-margin: 20px 0;
-}
-.welcome-img{
-grid-column: 1/-1;
-grid-row: 2;
-padding-top:20px;
-}
-#welcome img{
-width: 100%;
+    background-attachment: fixed;
+    min-height: 600px;
 }
 
-
-#collections, #home_collections{
-    background: floralwhite;
-}
-.collections-text, .home_collections-text {
-    text-align: center;
-    background-color: #ffdcdc;
-}
-.home_collections-text img{
-    border-radius: 50px;
-    width: 30%;
-}
-
-.home_collection {
-    grid-column: span 2;
-    padding: 20px 5px;
-}
-.home_collection p{
-    font-size: 12px;
-    text-align: center;
-    padding: 5px 0;
-    
-}
-.home_collection img{
-    border-radius: 5px;
+#about .primary-overlay, .showcase-footer-overlay{
+    background: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-}
-
-.link {
-    text-align: center;
-}
-.collection {
-    grid-column: span 4;
-    padding: 20px 5px;
-}
-.collection p{
-    text-align: center;
-    padding: 5px 0;
-    
-}
- .collection img{
-    border-radius: 5px;
-    width: 100%;
-}
-.collection-link{
-    grid-column: span 4;
-    margin-bottom: 10px;
-    justify-self: center;
-    align-self: center;
-    font-size: 0.9em;
-}
-.collection-link{
-    /*! padding: 10px; */
-    /*! background:seashell; */
-    /*! border: 2px solid; */
-    /*! border-radius: 10px; */
-    margin: 0;
-    font-size: 1em;
-    text-decoration: underline;
-}
-.collection-link:hover{
-    background: wheat;
-    border-radius: 15px;
-    padding: 2px 5px;
-}
-.collection-link:active{
-    background: wheat;
-}
-#sarees{
-    text-align: center;
-    padding: 20px;   
-}
-#sarees h2{
-    padding-bottom: 10px;
-}
-#sarees .grid{
-    row-gap: 20px;
-    column-gap: 5px;
-}
-.saree_img{
-    grid-column: span 4;
-}
-.saree_img img{
-    width: 100%;
-}
-#contact{
-    padding: 30px 20px;
-    background: #e2c9c2;
-}
-#contact h2{
-    margin-bottom: 0;
-    text-align: center;
-}
-
-#contact form{
-    width: 65%;
-    max-width: 80%;
-    margin: 10px auto;
-    text-align: center;
-}
-#contact input,#contact textarea{
-    width: 85%;
-    margin: 2px 0;
-    padding: 10px;
-}
-#contact textarea{
-    max-width: 100%;
-    height: 200px;
-}
-
-#contact input[type=submit]{
-    padding: 0;
-    width: 30%;
-    border-radius: 30px;
-    background: tan;
-}
-
-#contact input[type=submit]:hover{
-    cursor: pointer;
-    background: tomato;
-}
-.contact_us {
-    text-align: center;
-    padding-top: 20px;
-}
-.contact_us p{
-    font-size: 0.5em;
-}
-footer{
-    height: 75px;
-    width: 100%;
-    background-color: tomato;
-}
-footer .grid{
     height: 100%;
 }
+#aboutImg{
+    margin-top: 100px;
+}
+.showcase-header {
+    padding: 1rem;
+    text-align: center;
+    width: 50%;
+    border-bottom: rgba(0, 0, 0, 0.5) 2px solid;
+    margin: 0 auto;
+}
 
-footer p{
-    padding: 0 10px;
-    grid-column: 1/5;
-    font-size: 1em;
-    align-self: center;
+.showcase-footer{
+    position: relative;
+    background: url(../media/saree_img_2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 150px;
 }
-footer .social{
-    grid-column: 6/10;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.showcase-footer-content{
+    padding: 1rem;
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
 }
-footer .social li{
-    padding: 10px;
-}
+
+@media (max-width: 768px) {
+    #showcase {
+        min-height: 500px; }
+        #showcase h1 {
+            font-size: 4rem; }
   
-
-/* small table styles */
-/* @media screen and (min-width: 620px){
-} */
-/* large tablets and laptops */
-@media screen and (min-width: 1020px){
-    body{
-        font-size: 20px;
-        max-width: 1020px;
-        margin: 0 auto;
-    }
-    .menu{
-        display: none;
-    }
-    .site-nav ul{
-        display: flex;
-        grid-column: 4/10;
-        justify-content: flex-end;
-        align-self: center;
-    }
-    .site-nav li{
-        padding: 10px;
-    }
-    .home_collection, .collection {
-        grid-column: span 4;
-    }
-    .saree_img {
-        grid-column: span 2;
-    }
-    #contact form{
-        max-width: 600px;
-    }
-    #contact input,#contact textarea{
-        width: 90%;
-    }
-    .contact_us p{
-        font-size: 1em;
-    }
-    .welcome-text{
-    padding: 20px;
-    grid-column: span 5;
-    grid-row: 1;
-    }
-    .welcome-img{
-    grid-column: span 5;
-    grid-row: 1;
+    .mb-resp {
+        margin-bottom: 1rem; } }
+        
+@media (max-width: 1199px){
+    #aboutImg{
+        margin-top: 170px;
     }
 }
-
-/* desktop styles */
-/* @media screen and (min-width: 1200px){
-    body{
-        font-size: 22px;
-        max-width: 1080px;
-        margin: 10px auto;
-    }
-    #contact form{
-        max-width: 700px;
-    }
-    #contact input,#contact textarea{
-        width: 90%;
-    }
-} */

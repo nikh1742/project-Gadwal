@@ -3,49 +3,75 @@
 
 
 {% block content %}
-<section id="welcome" class="grid">
-    <div class="welcome-img">
-        <img src="/media/home_page.jpg" alt="a banner saree">
-    </div>
 
-    <div class="welcome-text">
-        <div class="about_us">
-            <h2>About Us</h2>
-            <p>
-                We are "Gadwal Saree" enterprise based in Hyderabad. We specialze in Gadwal Pattu Saree collection which
-                is a handcrafted woven sari style in Gadwal of Jogulamba Gadwal district which is famous all over South
-                India. We deliver sarees directly at your house*. Look at our collecitons below and contact us if you
-                need a visit from us</p>
+<!-- ABOUT/WELCOME US -->
+<section id="about">
+    <div class="primary-overlay text-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="display-2 mt-5 pt-5">Gadwal Sarees</h1>
+                    <p class="lead">
+                        We are "Gadwal Saree" enterprise based in Hyderabad. We specialze in Gadwal Pattu Saree
+                        collection which
+                        is a handcrafted woven sari style in Gadwal of Jogulamba Gadwal district which is famous all
+                        over South
+                        India.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-lg text-black">
+                        <i class="fas fa-arrow-right"></i> Read More
+                    </a>
+                </div>
+                <div class="col-lg-6 mt-10">
+                    <img src="media/saree_img_3.jpg" alt="" class="img-fluid d-none d-lg-block p-3" id="aboutImg">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="home_collections">
-    {% reduced_collection_items as collections %}
-    <div class="home_collections-text">
-        {% if collections %}
-        <h2>Our Special Collections</h2>
-        {% else %}
-        <h2>No current collections are available. Check again later...</h2>
-        <img src="/media/oops.jpg" alt="oops no collections">
-        {% endif %}
-    </div>
-    <div class="grid">
-        {% for collection in collections %}
-        <div class="home_collection">
-            <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
-                <img src="/media/{% collection_thumbnail collection %}" alt="">
-                <p>{{collection}}</p>
-                <p>{% number_of_items collection %} items</p>
-            </a>
-        </div>
-        {% endfor %}
+<!-- RANDOM COLLECTION -->
 
-        
+<section id="showcase">
+    {% reduced_collection_items as collections %}
+    <div class="container">
+        <div class="showcase-header">
+            <h3 class="display-4 ">View our Collections</h3>
+            <p class="lead">Here are some of our popular collections.</p>
+        </div>
+        <div class="row my-3">
+            {% for collection in collections %}
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <img src="media/{% collection_thumbnail collection %}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="card-text">{{collection}}</p>
+                        <p class="card-text text-muted">{% number_of_items collection %} items</p>
+                    </div>
+                    <div class="card-footer bg-dark text-white">
+                        <a href="{% url 'sar_coll:saree_coll' collection.collection_name %}"
+                            class="text-decoration-none text-white">
+                            view this collection
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {% if collections %}
-    <p class="link">...<a href="{% url 'sar_coll:all_coll' %}" class="collection-link">click here</a> for more collections</p>
-    {% endif %}
+    <div class="showcase-footer">
+        <div class="container">
+            <!-- <div class="showcase-footer-overlay"> -->
+            <div class="showcase-footer-content text-light">
+                <h3 class="py-2">please click the link below to view all of our
+                    collections.</h3>
+                <a href="{% url 'sar_coll:all_coll' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-arrow-right"></i> More
+                </a>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
 </section>
 
 

@@ -1,9 +1,10 @@
 {% extends 'saree_collection/base.html' %}
 {% load sar_tmp_tags %}
+{% load widget_tweaks %}
 
 
 {% block content %}
-<section id="collections" class="grid">
+<!-- <section id="collections" class="grid">
     {% for collection in collections %}
     <div class="collection">
         <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
@@ -13,6 +14,30 @@
         </a>
     </div>
     {% endfor %}
+</section> -->
+
+<!-- COLLECTIONS -->
+<section id="collections">
+    <div class="container">
+        <div class="row py-5">
+            {% for collection in collections %}
+            <div class="col-sm-6 col-md-4">
+                <div class="card text-center">
+                    <img src="/media/{% collection_thumbnail collection %}" alt="" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <p class="card-text">{{collection}}</p>
+                        <p class="card-text text-muted">{% number_of_items collection %} items</p>
+                    </div>
+                    <div class="card-footer bg-dark text-white">
+                        <a href="{% url 'sar_coll:saree_coll' collection.collection_name %}"
+                            class="text-decoration-none text-white">
+                            view this collection
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 {% endblock content %}
-    

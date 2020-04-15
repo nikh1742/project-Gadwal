@@ -1,18 +1,38 @@
 {% extends 'saree_collection/base.html' %}
 
+{% block addcss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+{% endblock addcss %}
 
 {% block content %}
-    <section id='sarees'>
-        <h2>{{ collection }} Collection</h2>
-        <div class="grid">
+<section id='sarees'>
+    <div class="container">
+        <h2 class="text-center display-3 ">{{ collection }} Collection</h2>
+        <div class="row mb-4 align-items-center">
             {% for saree in sarees %}
-            <div class="saree_img">
-                <img src="/media/{{saree.saree_img.thumbnail }}" alt="">
+            <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="d-flex justify-content-center ">
+                    <a href="/media/{{saree.saree_img }}" data-toggle="lightbox" data-gallery="{{ collection }}">
+                        <img src="/media/{{saree.saree_img.thumbnail }}" class="img-fluid" alt="">
+                    </a>
+                </div>
             </div>
             {% empty %}
             <p>No items in current collection</p>
             {% endfor %}
         </div>
-    </section>
-        
+    </div>
+</section>
+
 {% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script>
+    //lighbox init
+    $(document).on('click', '[data-toggle="lightbox"]', function () {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+{% endblock script %}

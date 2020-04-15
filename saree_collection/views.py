@@ -81,10 +81,12 @@ def sarees_in_collection(request, collection):
 
 def customer_contact_form_view(request):
     if request.method == 'POST':
-        form = CustomerContactForm(date=request.POST)
+        form = CustomerContactForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("Thanks we will get back to you on that")
+            return HttpResponse("Thanks for showing interest. We will get back to you.")
+        else:
+            return HttpResponse("invalid details")
     form = CustomerContactForm()
     context = {'form': form}
     return render(request, 'saree_collection/CustomerContactModel.html', context)

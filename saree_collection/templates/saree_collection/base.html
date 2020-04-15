@@ -1,51 +1,140 @@
 {% load static %}
 {% load sar_tmp_tags %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Gadwal Sarees</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    {% block addcss %}
+
+    {% endblock addcss %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
+
 <body>
-    <input type="checkbox" id="toggle">
-    <nav class="site-nav grid">
-        <a href="{% url 'sar_coll:home' %}" class="logo"><h2>Gadwal Sarees</h2></a>
-        <label for="toggle" class="menu"><h2>Menu</h2></label>
-        <ul>
-            <li><a href="{% url 'sar_coll:all_coll' %}">All collections</a></li>
-            <li><a href="{% url 'sar_coll:all_sarees' %}">All Sarees</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">
+        <div class="container">
+            <a href="{% url 'sar_coll:home' %}" class="navbar-brand">Gadwal Sarees</a>
+            <button class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sar_coll:all_coll' %}">All collections</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sar_coll:all_sarees' %}">All Sarees</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
     <main>
         {% block content %}
-            
+
         {% endblock content %}
     </main>
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <form action="{% url 'sar_coll:cust_cont' %}">
-            {% contact_form %}
-            <input type="submit" value="submit">
-        </form>
-        <div class="contact_us">
-            <h2>call/message directly us at</h2>
-            <div>
-                <p>AnuRaghunath Enterprise</p>
-                <p>Phone: +919952092050</p>
-                <p>email: momaithnath@gmail.com</p>
+    <!-- CONTACT -->
+    <section id="contact" class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center">Get in touch</h3>
+                            <hr>
+                            <p>AnuRaghunath Enterprise</p>
+                            <h4>Call us at</h4>
+                            <p>+919952092050</p>
+                            <h4>Email us at</h4>
+                            <p>email: momaithnath@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card p-3">
+                        <h3 class="text-center">Please fill out form to contact us</h3>
+                        <hr>
+                        <form action="{% url 'sar_coll:cust_cont' %}" id="customerContact">
+                            {% csrf_token %}
+                            {% contact_form as form %}
+
+                            {% for hidden_field in form.hidden_fields %}
+                            {{ hidden_field }}
+                            {% endfor %}
+                            <div class="row">
+                                {% for field in form.visible_fields %}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {% if field.label == "Message" %}
+                                        {% else %}
+                                        {{ field.label_tag }}
+                                        {% render_field field class+="form-control" %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {{ form.message.label_tag }}
+                            {% render_field form.message class+="form-control mb-3" rows="2" %}
+                            <input type="submit" value="submit" class="btn btn-primary btn-block" id="contactSubmit"
+                                data-toggle="modal" data-target="#myModal">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <footer>
-        <div class="grid">
-            <p>Follow us on</p>
-            <div class="social">
-                <li><a href=""><img src="" alt="">FB</a></li>
-                <li><a href=""><img src="" alt="">WhatsApp</a></li>
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="py-2 bg-dark text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col ml-auto">
+                    <p class="lead">
+                        Copyright &copy;
+                        <span id="year"></span>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- MODALS -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">Modal Title</div>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Lorem, ipsum dolor.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Clsoe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'submit.js' %}"></script>
+    {% block script %}
+
+    {% endblock script %}
 </body>
+
 </html>
