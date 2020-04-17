@@ -1,6 +1,6 @@
 #about{
     position: relative;
-    background: url(../media/beechupally.jpg);
+    background: url(beechupally.jpg);
     background-size: cover;
     background-attachment: fixed;
     min-height: 600px;
@@ -27,7 +27,7 @@
 
 .showcase-footer{
     position: relative;
-    background: url(../media/saree_img_2.jpg);
+    background: url(saree_img_2.jpg);
     background-size: cover;
     background-attachment: fixed;
     min-height: 150px;

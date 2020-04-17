@@ -4,24 +4,12 @@
 
 
 {% block content %}
-<!-- <section id="collections" class="grid">
-    {% for collection in collections %}
-    <div class="collection">
-        <a href="{% url 'sar_coll:saree_coll' collection.collection_name%}">
-            <p>{{collection}}</p>
-            <img src="/media/{% collection_thumbnail collection %}" alt="">
-            <p>{% number_of_items collection %} items</p>
-        </a>
-    </div>
-    {% endfor %}
-</section> -->
-
 <!-- COLLECTIONS -->
 <section id="collections">
     <div class="container">
         <div class="row py-5">
             {% for collection in collections %}
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 mb-4">
                 <div class="card text-center">
                     <img src="/media/{% collection_thumbnail collection %}" alt="" class="card-img-top img-fluid">
                     <div class="card-body">

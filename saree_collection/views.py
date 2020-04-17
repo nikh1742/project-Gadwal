@@ -27,7 +27,9 @@ def add_new_collection(request):
             for f in images_list_from_form:
                 file = SareeModel(saree_img=f, collection_name = collection_instance)
                 file.save()
-        return HttpResponse('Done')
+            return HttpResponse('Upload completed successfully')
+        else:
+            return HttpResponse('Failed')
     else:
         form =  SareeModelForm()
     context = {
@@ -48,7 +50,9 @@ def add_to_collection(request):
             for f in images_list_from_form:
                 file = SareeModel(saree_img=f, collection_name = collection_instance)
                 file.save()
-        return HttpResponse('Done')
+            return HttpResponse('Upload completed successfully')
+        else:
+            return HttpResponse('Failed')
     else:
         form =  SecSareeModelForm()
     context = {
@@ -86,10 +90,10 @@ def customer_contact_form_view(request):
             form.save()
             return HttpResponse("Thanks for showing interest. We will get back to you.")
         else:
-            return HttpResponse("invalid details")
-    form = CustomerContactForm()
-    context = {'form': form}
-    return render(request, 'saree_collection/CustomerContactModel.html', context)
+            return HttpResponse("Invalid details")
+    else:
+        return HttpResponse("Invalid POST request")
+
 
 def all_sarees(request):
     sarees = SareeModel.objects.all()

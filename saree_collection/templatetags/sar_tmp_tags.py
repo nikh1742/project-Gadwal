@@ -30,5 +30,5 @@ def number_of_items(collection_name):
 @register.simple_tag
 def reduced_collection_items():
     """template tag to return 3 random CollectionModel items"""
-    collections = CollectionModel.objects.all().order_by('?')[:4]
+    collections = CollectionModel.objects.all().order_by('?')[:3]
     return collections

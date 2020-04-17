@@ -1,11 +1,30 @@
 {% extends 'saree_collection/base.html' %}
+{% load widget_tweaks %}
+
 
 {% block content %}
-
-    <form action="{% url 'sar_coll:add_coll' %}" method="POST" enctype="multipart/form-data">
-        {{ form }}
-        {% csrf_token %}
-        <input type="submit" value="submit">
-    </form>
-
+<section id="addNewCollection">
+    <div class="container">
+        <div class="text-center mx-auto" style="max-width: 50%;">
+            <form action="{% url 'sar_coll:add_coll' %}" method="POST" enctype="multipart/form-data" id="submitForm">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {% render_field field class+="form-control-file text-center" %}
+                </div>
+                {% endfor %}
+                <input class="btn btn-primary" type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock content %}
+
+{% block script %}
+<script>
+    // submitting the form
+    const uploadForm = document.getElementById('submitForm');
+    submitListner(uploadForm);
+</script>
+{% endblock script %}

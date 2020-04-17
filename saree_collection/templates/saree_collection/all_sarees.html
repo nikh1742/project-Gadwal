@@ -1,5 +1,9 @@
 {% extends 'saree_collection/base.html' %}
 
+{% block addcss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+{% endblock addcss %}
+
 {% block content %}
 <!-- All Sarees -->
 
@@ -10,7 +14,7 @@
             {% for saree in sarees %}
             <div class="col-sm-6 col-lg-4 mb-4">
                 <div class="d-flex justify-content-center ">
-                    <a href="/media/{{saree.saree_img }}" data-toggle="lightbox" data-gallery="{{ collection }}">
+                    <a href="/media/{{saree.saree_img }}" data-toggle="lightbox" data-gallery="entireCollection">
                         <img src="/media/{{saree.saree_img.thumbnail }}" class="img-fluid" alt="">
                     </a>
                 </div>
@@ -22,3 +26,14 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script>
+    //lighbox init
+    $(document).on('click', '[data-toggle="lightbox"]', function () {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+{% endblock script %}
