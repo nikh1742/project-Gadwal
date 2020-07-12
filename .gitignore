@@ -1,6 +1,6 @@
 #ignore
 db.sqlite3
-django_env
+virtualenv
 .vscode
 media/*
 *.pyc

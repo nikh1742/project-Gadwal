@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # external libraries
     'stdimage',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
